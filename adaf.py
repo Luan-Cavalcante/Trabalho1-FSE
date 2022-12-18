@@ -10,7 +10,7 @@ import adafruit_dht
 # dhtDevice = adafruit_dht.DHT22(board.D18, use_pulseio=False)
 
 def read_dht22(gpio):
-    dhtDevice = adafruit_dht.DHT22(board.D4)
+    dhtDevice = adafruit_dht.DHT22(board.D4,use_pulseio = False)
 
     # Print the values to the serial port
     temperature_c = dhtDevice.temperature
