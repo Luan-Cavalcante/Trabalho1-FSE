@@ -1,0 +1,7 @@
+{
+    "sala1":{
+        "ip_servidor_distribuido": "192.168.0.52",
+        "porta_servidor_distribuido": 10002,
+        "porta_servidor_central": 10002
+    }
+}
