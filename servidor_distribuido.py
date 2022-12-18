@@ -228,11 +228,13 @@ def watch_sensors(dist_server_info : dict):
     while True:
         print('hello from watch sensors')
         if GPIO.input(mapa_dict['Sensor de Fumaça']) == 0 and fumaca_flag == 1:
+            print("tava ligado e desligou")
             fumaca_flag = 0
             send_data_through_socket('F-INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
 
         # checa fumaça
         if GPIO.input(mapa_dict['Sensor de Fumaça']) == 1 and fumaca_flag == 0:
+            print("tava desligado e ligou")
             print("ALARMEE !!!!!!")
             print('puta que pariu, pegou fogo')
             fumaca_flag = 1
