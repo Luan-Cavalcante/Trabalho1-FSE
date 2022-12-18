@@ -124,18 +124,24 @@ def setup_state():
 
     states["inputs"] = inputs
     states["outputs"] = outputs
-
+    states['sensor_temp'] = dht22_dict
     return states
 
 def action_all(action):
     global mapa_dict
     
     action = int(action)
-    for output in dist_server_data['outputs']:
-        gpio = output['tag']
-        print(gpio)
-        print(f"State = {GPIO.input(mapa_dict[gpio])}")
-        GPIO.output(mapa_dict[gpio],action)
+
+    try:
+        for output in dist_server_data['outputs']:
+            gpio = output['tag']
+            print(gpio)
+            print(f"State = {GPIO.input(mapa_dict[gpio])}")
+            GPIO.output(mapa_dict[gpio],action)
+        return 1
+    except:
+        return 0
+    
 
 
 def receive_data_through_socket(setup_server_dist):
@@ -155,7 +161,10 @@ def receive_data_through_socket(setup_server_dist):
 
             if data[0] == '1':
                 if data[2:] == 'ALL':
-                    action_all(1)
+                    sucess = action_all(1)
+                    print(f"deu certo {sucess}")
+                    conn.send(str(sucess).encode())
+
                 else:
                     try:
                         disp = data[2:]
@@ -169,7 +178,9 @@ def receive_data_through_socket(setup_server_dist):
 
             elif data[0] == '0':
                 if data[2:] == 'ALL':
-                    action_all(0)
+                    sucess = action_all(0)
+                    print(f"deu certo {sucess}")
+                    conn.send(str(sucess).encode())
                 else:
                     try :
                         gpio = data[2:]
@@ -213,24 +224,26 @@ def watch_sensors(dist_server_info : dict):
     fumaca_flag = 0
     to_na_thread = 0
     sensor_flag = 0
+
     while True:
         print('hello from watch sensors')
-        if GPIO.input(mapa_dict['Sensor de Fumaça']) == 0:
+        if GPIO.input(mapa_dict['Sensor de Fumaça']) == 0 and fumaca_flag == 1:
             fumaca_flag = 0
+            send_data_through_socket('F-INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
 
         # checa fumaça
         if GPIO.input(mapa_dict['Sensor de Fumaça']) == 1 and fumaca_flag == 0:
             print("ALARMEE !!!!!!")
             print('puta que pariu, pegou fogo')
             fumaca_flag = 1
-            #send_data_through_socket('INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
+            send_data_through_socket('INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
             print('sinal enviado')
 
         # se o alarme tiver ativo e tiver movimento em algum sensor 
         # dispara buzzer 
         if GPIO.input(mapa_dict['Sirene do Alarme']) == 1:
             # Verifica sensor janela 
-            #print("Modo de segurança ON")
+            print("Modo de segurança ON")
             if GPIO.input(mapa_dict['Sensor de Janela']) == 1:
                 #print("OPA, Tem ladrão na janela !!!")
                 send_data_through_socket('ALARM-janela',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
@@ -252,8 +265,11 @@ def watch_sensors(dist_server_info : dict):
                     timer.start()
                     #print("Acabei de contar carai")
                     timer.join()
+                    to_na_thread = 0
                     GPIO.output(mapa_dict['Lâmpada 01'],0)
                     GPIO.output(mapa_dict['Lâmpada 02'],0)
+            else:
+                to_na_thread = 0
         
         time.sleep(0.5)
 

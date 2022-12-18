@@ -182,6 +182,11 @@ def receive_data_through_socket(sala_data):
                 print('Alarme da janela disparouuuu')
                 confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_central"],'127.0.0.1')
                 log(acao,gpio,confirmation)
+            if data == 'F-INCENDIO':
+                print("Incendio acabou no prédio.")
+                confirmation = send_data_through_socket('0'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_central"],'127.0.0.1')
+                log(data,-1,confirmation)
+                
 
 if __name__ == "__main__":
     
