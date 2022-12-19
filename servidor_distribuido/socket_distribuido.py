@@ -91,11 +91,25 @@ def timer_th(tempo):
 
     to_na_thread = 0
     
+pessoas_na_sala = 0
+
+def sub_person():
+    global pessoas_na_sala
+
+    pessoas_na_sala-=1
+
+def add_person():
+    global pessoas_na_sala
+
+    pessoas_na_sala+=1
 
 def watch_sensors(dist_server_info : dict):
     fumaca_flag = 0
     sensor_flag = 0
 
+    GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Entrada'], GPIO.RISING, callback=add_person,bouncetime=200)   
+    GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Saída'], GPIO.RISING, callback=sub_person,bouncetime=200)   
+        
     while True:
         print('hello from watch sensors')
         if GPIO.input(mapa_dict['Sensor de Fumaça']) == 0 and fumaca_flag == 1:

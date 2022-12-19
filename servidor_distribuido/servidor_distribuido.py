@@ -122,6 +122,7 @@ def setup_state():
     states["inputs"] = inputs
     states["outputs"] = outputs
     states['sensor_temp'] = dht22_dict
+    states['qntd_pessoas'] = pessoas_na_sala
     return states
 
 def action_all(action):
@@ -138,65 +139,22 @@ def action_all(action):
         return 1
     except:
         return 0
+
+pessoas_na_sala = 0
+
+def add_person():
+    global pessoas_na_sala
+
+    pessoas_na_sala+=1
+
+def sub_person():
+    global pessoas_na_sala
+
+    pessoas_na_sala-=1
+
+GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Entrada'], GPIO.RISING, callback=add_person,bouncetime=200)   
+GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Saída'], GPIO.RISING, callback=sub_person,bouncetime=200)   
     
-
-def timer_th(tempo):
-    time.sleep(tempo)
-
-def watch_sensors(dist_server_info : dict):
-    fumaca_flag = 0
-    to_na_thread = 0
-    sensor_flag = 0
-
-    while True:
-        print('hello from watch sensors')
-        if GPIO.input(mapa_dict['Sensor de Fumaça']) == 0 and fumaca_flag == 1:
-            print("tava ligado e desligou")
-            fumaca_flag = 0
-            send_data_through_socket('F-INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
-
-        # checa fumaça
-        if GPIO.input(mapa_dict['Sensor de Fumaça']) == 1 and fumaca_flag == 0:
-            print("tava desligado e ligou")
-            print("ALARMEE !!!!!!")
-            print('puta que pariu, pegou fogo')
-            fumaca_flag = 1
-            send_data_through_socket('INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
-            print('sinal enviado')
-
-        # se o alarme tiver ativo e tiver movimento em algum sensor 
-        # dispara buzzer 
-        if GPIO.input(mapa_dict['Sirene do Alarme']) == 1:
-            # Verifica sensor janela 
-            print("Modo de segurança ON")
-            if GPIO.input(mapa_dict['Sensor de Janela']) == 1:
-                #print("OPA, Tem ladrão na janela !!!")
-                send_data_through_socket('ALARM-janela',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
-            if GPIO.input(mapa_dict['Sensor de Presença']) == 1:
-                #print("OPA, Tem ladrão na sala !!!")
-                send_data_through_socket('ALARM-presenca',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
-            if GPIO.input(mapa_dict['Sensor de Porta']) == 1:
-                #print("OPA, Tem ladrão na porta !!!")
-                send_data_through_socket('ALARM-porta',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
-        else:
-            #print("DESLIGADÃO !!!")
-            if GPIO.input(mapa_dict['Sensor de Presença']) == 1:
-                #print("OPA, Tem gente, liga a luz aí amigão!!")
-                GPIO.output(mapa_dict['Lâmpada 01'],1)
-                GPIO.output(mapa_dict['Lâmpada 02'],1)
-                if to_na_thread == 0:
-                    to_na_thread = 1
-                    timer = Thread(target = timer_th,args = [3])
-                    timer.start()
-                    #print("Acabei de contar carai")
-                    timer.join()
-                    to_na_thread = 0
-                    GPIO.output(mapa_dict['Lâmpada 01'],0)
-                    GPIO.output(mapa_dict['Lâmpada 02'],0)
-            else:
-                to_na_thread = 0
-        
-        time.sleep(0.5)
 
 def main():
     setup_state()
@@ -206,6 +164,7 @@ def main():
     watching_thread = Thread(target = watch_sensors,args = (dist_server_data,),daemon = True)
     listening_thread = Thread(target = receive_data_through_socket,args = (dist_server_data,),daemon = True)
     
+
     listening_thread.start()
     watching_thread.start()
     
