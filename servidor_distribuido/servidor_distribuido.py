@@ -39,6 +39,7 @@ import time
 import json
 from adaf import read_dht22
 from threading import Thread
+from socket_distribuido import receive_data_through_socket,send_data_through_socket
 
 states = dict()
 dist_server_data = dict()
@@ -55,10 +56,6 @@ def getjson():
 
     return data,json_string
 
-def setup_server_dist():
-    data,json_string = getjson()
-    #print(data)
-    return data
 
 def read_temp(data):
     for temp in data['sensor_temperatura']:
@@ -143,84 +140,10 @@ def action_all(action):
         return 0
     
 
-
-def receive_data_through_socket(setup_server_dist):
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        print(setup_server_dist)
-        s.bind(('127.0.0.1', setup_server_dist['porta_servidor_central']))
-        s.listen(5)
-
-        while True:    
-            print("Esperando conexão . . .")
-            conn, addr = s.accept()
-            print("Conexão aceita . . .")
-            print(f"Connected by {addr}")
-            print("Esperando dados . . .")
-            data = conn.recv(1024).decode()
-            # tratar o json recebido e fazer o que ele manda
-
-            if data[0] == '1':
-                if data[2:] == 'ALL':
-                    sucess = action_all(1)
-                    print(f"deu certo {sucess}")
-                    conn.send(str(sucess).encode())
-
-                else:
-                    try:
-                        disp = data[2:]
-                        print(f"Quero ligar {disp}")
-                        print(f"Liguei State = {GPIO.input(mapa_dict[disp])}")
-                        GPIO.output(mapa_dict[disp],GPIO.HIGH)
-                        conn.send('1'.encode())
-                    except:
-                        print('Não consegui ligar!!!')
-                        conn.send('0'.encode())
-
-            elif data[0] == '0':
-                if data[2:] == 'ALL':
-                    sucess = action_all(0)
-                    print(f"deu certo {sucess}")
-                    conn.send(str(sucess).encode())
-                else:
-                    try :
-                        gpio = data[2:]
-                        print(f"Quero desligar {gpio}")
-                        print(f"desliguei State = {GPIO.input(mapa_dict[gpio])}")
-                        GPIO.output(mapa_dict[gpio],GPIO.LOW)
-                        conn.send('1'.encode())
-                    except:
-                        print('Não consegui ligar!!!')
-                        conn.send('0'.encode())
-
-            elif data == 'EXPLAIN':
-                print("Recebi EXPLAIN")
-                states = setup_state()
-                print("Enviando Respostas . . .")
-                gpio_s = json.dumps(states)
-                print(type(gpio_s))
-                conn.send(gpio_s.encode())
-                print("Respostas enviadas . . .")
-
-            elif data == 'TEMP':
-                temp_s = read_temp(dist_server_data)
-                temp_s = json.dumps(dht22_dict)
-                conn.send(temp_s.encode())
-
-            else:
-                print("Mensagem não reconhecida\nEnvie novamente . . .")
-
-def send_data_through_socket(msg,porta,ip):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((ip, int(porta)))
-    s.send(msg.encode())
-    
-    data_S = s.recv(2048).decode()
-
 def timer_th(tempo):
     time.sleep(tempo)
 
 def watch_sensors(dist_server_info : dict):
-    
     fumaca_flag = 0
     to_na_thread = 0
     sensor_flag = 0
@@ -275,18 +198,20 @@ def watch_sensors(dist_server_info : dict):
         
         time.sleep(0.5)
 
-if __name__ == '__main__':
-
+def main():
     setup_state()
 
     dist_server_data = setup_server_dist()
 
-    watching_thread = Thread(target = watch_sensors,args = (dist_server_data,))
-    listening_thread = Thread(target = receive_data_through_socket,args = (dist_server_data,))
+    watching_thread = Thread(target = watch_sensors,args = (dist_server_data,),daemon = True)
+    listening_thread = Thread(target = receive_data_through_socket,args = (dist_server_data,),daemon = True)
     
     listening_thread.start()
     watching_thread.start()
     
-    print('alguma thread veio')
     listening_thread.join()
     watching_thread.join()
+
+if __name__ == '__main__':
+    main()
+    
