@@ -20,21 +20,33 @@ sala_data =  dict()
 data = dict()
 
 def match_sala():
-    print("Qual sala ?\n1-Sala 1\n")
+    print("Qual sala ?\n1-Sala 1\nSala 2\nSala 3\nSala 4\n>")
     sala = input()
     f = open("salas.json","r")
     dados_sala = json.load(f)
+    global sala_data
+
     
     if sala == '1':
-        global sala_data
-        
         sala_data = dados_sala['sala1']
         print(sala_data)
-        data = send_data_through_socket("EXPLAIN",'config',sala_data["porta_servidor_central"],'127.0.0.1')
+    elif sala == '2':
+        sala_data = dados_sala['sala2']
+        print(sala_data)
+    elif sala == '3':
+        sala_data = dados_sala['sala3']
+        print(sala_data)
+    elif sala == '4':
+        sala_data = dados_sala['sala4']
+        print(sala_data)
+    else: 
+        print("Lê caralho\n")
+        match_sala()
+    
+    data = send_data_through_socket("EXPLAIN"+sala,'config',sala_data["porta_servidor_central"],'127.0.0.1')
         #thread_temp = Thread(target = ask_temp_thought_socket,args =(sala_data["porta_servidor_distribuido"],sala_data['ip_servidor_distribuido']))
         #thread_temp.start()
-
-        return data
+    return data
 
 def ask_temp_thought_socket(porta,ip):
     while True:
@@ -71,7 +83,6 @@ def pretty_print(data):
             print(f"{entrada}".ljust(40, '.')+'OFF')
 
     print('Outputs: ')
-
     for saida,estado in data['outputs'].items():
         if(estado == 1):
             print(f"{saida}".ljust(40, '.')+'ON')
@@ -178,20 +189,24 @@ def receive_data_through_socket(sala_data):
                 print('Dispando alarme ! ! !')
                 confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_central"],'127.0.0.1')
                 log(data,-1,confirmation)
-            if data == 'ALARM-janela':
-                print('Alarme da janela disparouuuu')
+                conn.send('1'.encode())
+
+            if data[:5] == 'ALARM':
+                print('Alarme disparouuuu')
+                dispositivo_disparado = data[5:]
                 confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_central"],'127.0.0.1')
-                log(acao,gpio,confirmation)
+                log('1',gpio,confirmation)
+                conn.send('1'.encode())
+
             if data == 'F-INCENDIO':
                 print("Incendio acabou no prédio.")
                 confirmation = send_data_through_socket('0'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_central"],'127.0.0.1')
                 log(data,-1,confirmation)
+                conn.send('1'.encode())
                 
 
 if __name__ == "__main__":
-    
     data = match_sala()
-    #print(data['inputs'])
     
     thread_interface = Thread(target = menu,args=(data,))
     thread_receive = Thread(target = receive_data_through_socket,args = (sala_data,))

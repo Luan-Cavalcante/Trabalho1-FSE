@@ -25,11 +25,6 @@ distribuição de portas disponibilizada para a turma).
 '''
 to do list sábado 
 
-arrumar o jeito que as saídas saem para o servidor
-dar um jeito de monitorar o alarme de incendio e voltá-lo ao normal
-não apagar luz enquanto o sensor tiver ligado
-
-
 '''
 
 import socket		
@@ -142,11 +137,9 @@ def action_all(action):
     except:
         return 0
     
-
-
 def receive_data_through_socket(setup_server_dist):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        print(setup_server_dist)
+        #print(setup_server_dist)
         s.bind(('127.0.0.1', setup_server_dist['porta_servidor_central']))
         s.listen(5)
 
@@ -164,7 +157,6 @@ def receive_data_through_socket(setup_server_dist):
                     sucess = action_all(1)
                     print(f"deu certo {sucess}")
                     conn.send(str(sucess).encode())
-
                 else:
                     try:
                         disp = data[2:]
@@ -192,7 +184,7 @@ def receive_data_through_socket(setup_server_dist):
                         print('Não consegui ligar!!!')
                         conn.send('0'.encode())
 
-            elif data == 'EXPLAIN':
+            elif data[:7] == 'EXPLAIN':
                 print("Recebi EXPLAIN")
                 states = setup_state()
                 print("Enviando Respostas . . .")
@@ -216,6 +208,9 @@ def send_data_through_socket(msg,porta,ip):
     
     data_S = s.recv(2048).decode()
 
+    if data_S == '1':
+        print("BEM INFORMADO")
+
 def timer_th(tempo):
     time.sleep(tempo)
 
@@ -231,7 +226,6 @@ def watch_sensors(dist_server_info : dict):
             print("tava ligado e desligou")
             fumaca_flag = 0
             send_data_through_socket('F-INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
-
         # checa fumaça
         if GPIO.input(mapa_dict['Sensor de Fumaça']) == 1 and fumaca_flag == 0:
             print("tava desligado e ligou")
@@ -239,22 +233,21 @@ def watch_sensors(dist_server_info : dict):
             print('puta que pariu, pegou fogo')
             fumaca_flag = 1
             send_data_through_socket('INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
+            
             print('sinal enviado')
 
         # se o alarme tiver ativo e tiver movimento em algum sensor 
         # dispara buzzer 
         if GPIO.input(mapa_dict['Sirene do Alarme']) == 1:
             # Verifica sensor janela 
+
             print("Modo de segurança ON")
-            if GPIO.input(mapa_dict['Sensor de Janela']) == 1:
-                #print("OPA, Tem ladrão na janela !!!")
-                send_data_through_socket('ALARM-janela',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
-            if GPIO.input(mapa_dict['Sensor de Presença']) == 1:
-                #print("OPA, Tem ladrão na sala !!!")
-                send_data_through_socket('ALARM-presenca',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
-            if GPIO.input(mapa_dict['Sensor de Porta']) == 1:
-                #print("OPA, Tem ladrão na porta !!!")
-                send_data_through_socket('ALARM-porta',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
+            for entrada in dist_server_data['inputs']:
+                print(entrada)
+                if GPIO.input(mapa_dict[entrada['tag']]) == 1:
+                    print(f"OPA, Tem ladrão na {entrada['tag']} !!!")
+                #send_data_through_socket('ALARM-'+entrada['tag'],dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
+
         else:
             #print("DESLIGADÃO !!!")
             if GPIO.input(mapa_dict['Sensor de Presença']) == 1:
