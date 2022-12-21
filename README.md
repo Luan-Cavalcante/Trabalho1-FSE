@@ -27,27 +27,29 @@ Existe a opção de ligar e desligar o sistema de segurança que é representado
 
 E a opção de troca de sala.
 
+Há também o sistema de medição de **temperatura e umidade** e a **contagem de pessoas** que para ter o mesmo número certinho é preciso zerar a contagem da sala e aí sim inicia o servidor distribuído da respectiva sala.
+
 ### Funcionamento 
 
 Para executar o programa, você precisa estar via ssh conectado em alguma Rasp e pode subir o central e o distribuído na mesma máquina.
 
 Primeiramente, clone o repositório :
   
-  git clone https://github.com/Luan-Cavalcante/Trabalho1-FSE.git
+    git clone https://github.com/Luan-Cavalcante/Trabalho1-FSE.git
 
 Para as dependências :
 
-  pip install -r requirements.txt
+    pip install -r requirements.txt
 
 Para o **servidor distribuído**:
 
-  cd Trabalho1-FSE/servidor_distribuido
-  python3 servidor_distribuido.py
+    cd Trabalho1-FSE/servidor_distribuido
+    python3 servidor_distribuido.py
   
 Depois, para o **servidor central** :
 
-  cd Trabalho1-FSE/servidor_central
-  python3 servidor_central.py
+    cd Trabalho1-FSE/servidor_central
+    python3 servidor_central.py
   
 Se quiser que funcione o central para mais rasps, é só ir subindo o servidor distribuído nas outras salas que o central será capaz de identificá-los e trocar para eles.
  
