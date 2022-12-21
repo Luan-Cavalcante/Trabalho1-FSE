@@ -1,0 +1,22 @@
+{
+    "sala1":{
+        "ip_servidor_distribuido": "164.41.98.16",
+        "porta_servidor_distribuido": 10924,
+        "porta_servidor_central": 10926
+    },
+    "sala2":{
+        "ip_servidor_distribuido": "164.41.98.26",
+        "porta_servidor_distribuido": 10923,
+        "porta_servidor_central": 10926
+    },
+    "sala3":{
+        "ip_servidor_distribuido": "164.41.98.28",
+        "porta_servidor_distribuido": 10925,
+        "porta_servidor_central": 10926
+    },
+    "sala4":{
+        "ip_servidor_distribuido": "164.41.98.15",
+        "porta_servidor_distribuido": 10927,
+        "porta_servidor_central": 10926
+    }
+}

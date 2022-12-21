@@ -1,0 +1,465 @@
+Data,hora,ação,gpio
+13/12/2022, 15:38,Ligou,2
+13/12/2022, 15:40,Ligou,23
+13/12/2022, 15:49,Ligou,18
+13/12/2022, 15:52,Desligou,18
+13/12/2022, 15:53,Ligou,18
+13/12/2022, 15:59,Ligou,18
+13/12/2022, 16:00,Desligou,18
+13/12/2022, 17:19,Ligou,18
+13/12/2022, 17:19,Ligou,23
+13/12/2022, 17:20,Desligou,18
+13/12/2022, 17:20,Ligou,18
+13/12/2022, 17:20,Desligou,18
+13/12/2022, 17:20,Desligou,23
+13/12/2022, 17:29,Ligou,18
+13/12/2022, 17:46,Ligou,18
+13/12/2022, 17:55,Ligou,18
+13/12/2022, 18:00,Desligou,18
+13/12/2022, 18:25,Ligou,18
+13/12/2022, 18:26,Ligou,23
+13/12/2022, 18:28,Desligou,18
+13/12/2022, 18:34,Desligou,23
+13/12/2022, 18:35,Ligou,23
+13/12/2022, 18:37,Ligou,18
+13/12/2022, 18:37,Desligou,23
+14/12/2022, 00:00,Ligou,23
+14/12/2022, 12:10,Ligou,18
+14/12/2022, 12:33,Ligou,18,18
+14/12/2022, 12:35,Desligou,18,18
+15/12/2022, 13:32,Ligou,18,18
+15/12/2022, 13:36,Ligou,18,18
+19/12/2022, 22:32,Ligou,Lâmpada 01,Lâmpada 01
+19/12/2022, 22:33,Ligou,ALL,ALL
+19/12/2022, 22:34,Ligou,ALL,ALL
+20/12/2022, 14:01,Desligou,ALL,ALL
+20/12/2022, 14:04,Desligou,Lâmpada 01,Lâmpada 01
+20/12/2022, 14:05,Desligou,Sirene do Alarme,Sirene do Alarme
+20/12/2022, 14:05,Desligou,ALL,ALL
+20/12/2022, 14:05,Ligou,Lâmpada 01,Lâmpada 01
+20/12/2022, 14:09,Ligou,Lâmpada 01,Lâmpada 01
+20/12/2022, 14:09,Desligou,Lâmpada 01,Lâmpada 01
+20/12/2022, 14:09,Desligou,ALL,ALL
+20/12/2022, 14:10,Ligou,ALL,ALL
+20/12/2022, 14:10,Desligou,ALL,ALL
+20/12/2022, 14:19,Desligou,Sirene do Alarme,Sirene do Alarme
+20/12/2022, 14:22,Desligou,Sirene do Alarme,Sirene do Alarme
+20/12/2022, 14:26,Ligou,Lâmpada 01,Lâmpada 01
+20/12/2022, 14:27,Desligou,ALL,ALL
+20/12/2022, 14:27,Desligou,ALL,ALL
+20/12/2022, 14:28,Ligou,Lâmpada 01,Lâmpada 01
+20/12/2022, 14:28,Desligou,Lâmpada 01,Lâmpada 01
+20/12/2022, 14:30,Ligou,ALL,ALL
+20/12/2022, 14:30,Desligou,ALL,ALL
+20/12/2022, 14:30,Desligou,Sirene do Alarme,Sirene do Alarme
+20/12/2022, 14:34,Desligou,ALL,ALL
+20/12/2022, 14:35,Desligou,ALL,ALL
+20/12/2022, 14:35,Desligou,ALL,ALL
+20/12/2022, 14:40,Desligou,Lâmpada 01,Lâmpada 01
+20/12/2022, 14:49,Desligou,Sirene do Alarme,Sirene do Alarme
+20/12/2022, 14:50,Desligou,ALL,ALL
+20/12/2022, 14:51,Ligou,ALL,ALL
+20/12/2022, 14:51,Desligou,ALL,ALL
+20/12/2022, 14:52,Desligou,ALL,ALL
+21/12/2022, 01:56,INCENDIO,-1,-1
+21/12/2022, 01:56,INCENDIO,-1,-1
+21/12/2022, 01:56,INCENDIO,-1,-1
+21/12/2022, 01:56,INCENDIO,-1,-1
+21/12/2022, 01:56,INCENDIO,-1,-1
+21/12/2022, 01:56,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:57,INCENDIO,-1,-1
+21/12/2022, 01:59,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 01:59,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 01:59,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 01:59,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 01:59,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 01:59,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:05,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:39,INCENDIO,-1,-1
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:40,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,INCENDIO,-1,-1
+21/12/2022, 02:41,INCENDIO,-1,-1
+21/12/2022, 02:41,INCENDIO,-1,-1
+21/12/2022, 02:41,INCENDIO,-1,-1
+21/12/2022, 02:41,INCENDIO,-1,-1
+21/12/2022, 02:41,INCENDIO,-1,-1
+21/12/2022, 02:41,INCENDIO,-1,-1
+21/12/2022, 02:41,INCENDIO,-1,-1
+21/12/2022, 02:41,INCENDIO,-1,-1
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:41,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:47,INCENDIO,-1,-1
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:48,INCENDIO,-1,-1
+21/12/2022, 02:49,INCENDIO,-1,-1
+21/12/2022, 02:49,INCENDIO,-1,-1
+21/12/2022, 02:49,INCENDIO,-1,-1
+21/12/2022, 02:49,INCENDIO,-1,-1
+21/12/2022, 02:50,INCENDIO,-1,-1
+21/12/2022, 02:50,INCENDIO,-1,-1
+21/12/2022, 02:50,INCENDIO,-1,-1
+21/12/2022, 02:50,INCENDIO,-1,-1
+21/12/2022, 02:50,INCENDIO,-1,-1
+21/12/2022, 02:50,INCENDIO,-1,-1
+21/12/2022, 02:51,INCENDIO,-1,-1
+21/12/2022, 02:51,INCENDIO,-1,-1
+21/12/2022, 02:51,INCENDIO,-1,-1
+21/12/2022, 02:51,INCENDIO,-1,-1
+21/12/2022, 02:51,INCENDIO,-1,-1
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 02:51,Alarme de presenca,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:14,INCENDIO,-1,-1
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:15,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:17,Alarme da janela,Sirene do Alarme,Sirene do Alarme
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:18,INCENDIO,-1,-1
+21/12/2022, 11:19,INCENDIO,-1,-1

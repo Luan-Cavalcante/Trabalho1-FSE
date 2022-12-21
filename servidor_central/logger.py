@@ -14,9 +14,6 @@ def log(acao,gpio,confi):
         acao = 'Ligou'
     elif acao == '0':
         acao = 'Desligou'
-    else:
-        print("Tentativa errada")
-        return 
 
     with open("log.csv","a") as f:
         f.write(data_e_hora_sao_paulo_em_texto+','+acao+','+gpio+','+confi+'\n')
