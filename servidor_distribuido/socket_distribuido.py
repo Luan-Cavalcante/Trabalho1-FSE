@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 import socket		
 from threading import Thread
 import time
+from adaf import read_dht22
 
 states = dict()
 dist_server_data = dict()
@@ -175,8 +176,10 @@ def setup_state():
             dht22_dict['umidade'] = umidade
             states['sensor_temp'] = dht22_dict
 
-    except: 
+    except Exception as e: 
         print('Não consegui fazer leitura')
+        print(e)
+        time.sleep(1)
         dht22_dict['nome'] = temp['tag']
         dht22_dict['temperatura'] = -1
         dht22_dict['umidade'] = -1

@@ -19,10 +19,11 @@ def send_data_through_socket(msg,tipo,porta,ip):
             # tratar o data_s como 0 ou 1 de confirmação se a ação deu certo
             if data_S == '1':
                 # significa que deu certo
-                print("ação confirmada com sucesso")
-
+                #print("ação confirmada com sucesso")
+                pass
             else:
-                print("ação confirmada com error\nEnvie novamente.")
+                #print("ação confirmada com error\nEnvie novamente.")
+                pass
 
         elif tipo == 'config':
             # tratar o data_s como um json vindo com dados e states
@@ -61,22 +62,23 @@ def receive_data_through_socket(sala_data):
 
             if data == 'INCENDIO':
                 #print('Dispando alarme ! ! !')
-                confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_central"],'127.0.0.1')
+                confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_distribuido"],sala_data["ip_servidor_distribuido"])
                 log(data,-1,confirmation)
                 
             if data == 'ALARM-janela':
                 acao = 'Alarme da janela'
                 #print('Alarme da janela disparouuuu')
-                confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_central"],'127.0.0.1')
+                confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_distribuido"],sala_data["ip_servidor_distribuido"])
                 log(acao,'Sirene do Alarme',confirmation)
 
             if data == 'ALARM-porta':
                 acao = 'Alarme da porta'
                 #print('Alarme da porta disparouuuu')
-                confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_central"],'127.0.0.1')
+                confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_distribuido"],sala_data["ip_servidor_distribuido"])
                 log(acao,'Sirene do Alarme',confirmation)
 
             if data == 'ALARM-presenca':
                 #print('Alarme da janela disparouuuu')
-                confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_central"],'127.0.0.1')
+                acao = 'Alarme de presenca'
+                confirmation = send_data_through_socket('1'+"-"+'Sirene do Alarme','action',sala_data["porta_servidor_distribuido"],sala_data["ip_servidor_distribuido"])
                 log(acao,'Sirene do Alarme',confirmation)

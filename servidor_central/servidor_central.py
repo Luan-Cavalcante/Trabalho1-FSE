@@ -22,8 +22,6 @@ from threading import Thread
 from socket_central import send_data_through_socket,receive_data_through_socket
 import curses
 from cursesmenu import CursesMenu
-from curses import panel
-import curses.textpad
 
 sala_data =  dict()
 salas = []
@@ -32,6 +30,7 @@ sala_atual = 0
 def match_sala():
     global sala_atual
     global sala_data
+    global salas
     f = open("salas.json","r")
     dados_sala = json.load(f)
     f.close()
@@ -51,6 +50,7 @@ def match_sala():
             #print("DATA : ")
             #print(data)
             sala_data = sala_temp
+            #salas.append(sala_data)
             return data
 
         except Exception as e:
@@ -142,6 +142,8 @@ class Menu(object):
                     send_data_through_socket('ALARMOFF','action',sala_data["porta_servidor_distribuido"],sala_data["ip_servidor_distribuido"])
             elif self.position == 9:
                 match_sala()
+            elif self.position == 10:
+                exit(0)
         elif key == curses.KEY_UP:
             self.navigate(-1)
 
@@ -186,9 +188,11 @@ def interface_window(s):
                 
         s.addstr(i+2,0,f"Quantidade de pessoas na sala :{data['qntd_pessoas']}")
         s.addstr(i+3,0,f"ALARME = {data['ALARME']}")
+        s.addstr(i+4,0,f"Temperatura = {data['sensor_temp']['temperatura']}")
+        s.addstr(i+5,0,f"Umidade = {data['sensor_temp']['umidade']}")
+        s.addstr(20,20,f"Sala atual : {sala_atual}")
         
         curses.curs_set(0)
-        
         main_menu.display()
 
         s.refresh()
