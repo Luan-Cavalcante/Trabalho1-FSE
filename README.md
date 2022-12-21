@@ -1,9 +1,5 @@
 # Trabalho1-FSE
 
-<<<<<<< HEAD
-Trabalho elaborado para a disciplina de Fundamentos de Sistemas Embarcados.
-
-=======
 ## Automação Predial
 
 O objetivo do Trabalho 1 era fazer um sistema de automação predial simulado em 4 placas RaspberryPi, cada uma simulando uma sala do prédio.
@@ -58,4 +54,3 @@ Se quiser que funcione o central para mais rasps, é só ir subindo o servidor d
 ### Conclusão
 
 A conclusão é de que o trabalho foi muito interessante e proveitoso, com dificuldades, mas deu tudo certo no final e com certeza a gente fica inspirado pra seguir criando projetos nessa área. Ansioso para os próximos.
->>>>>>> f499459a3c0244b5286bd28bb874e81d88d25418
