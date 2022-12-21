@@ -1,21 +1,43 @@
+import json
+import RPi.GPIO as GPIO
+import socket		
+from threading import Thread
+import time
+
+states = dict()
+dist_server_data = dict()
+mapa_dict = dict()
+ALARME = 0
+pessoas_na_sala = 0
+
 def send_data_through_socket(msg,porta,ip):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((ip, int(porta)))
     s.send(msg.encode())
     
-    data_S = s.recv(2048).decode()
+def getjson():
+    # Opening JSON file
+    f = open('configuracao_sala_02.json')
+
+    json_string = f.read()
+    #print(type(json_string))
+    data = json.loads(json_string)
+    f.close()
+
+    return data,json_string
+
 
 def setup_server_dist():
     data,json_string = getjson()
     #print(data)
     return data
 
-
 def receive_data_through_socket(setup_server_dist):
+    global ALARME
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         print(setup_server_dist)
-        s.bind(('127.0.0.1', setup_server_dist['porta_servidor_central']))
-        s.listen(5)
+        s.bind(('0.0.0.0', setup_server_dist['porta_servidor_distribuido']))
+        s.listen(socket.INADDR_ANY)
 
         while True:    
             print("Esperando conexão . . .")
@@ -73,6 +95,28 @@ def receive_data_through_socket(setup_server_dist):
                 temp_s = json.dumps(dht22_dict)
                 conn.send(temp_s.encode())
 
+            elif data == 'ALARMON':
+                try:
+                    ALARME = 1
+                    print("RECEBI LIGAR O ALARME")
+                    conn.send('1'.encode())
+                except:
+                    conn.send('0'.encode())
+            
+            elif data == 'ALARMOFF':
+                try:
+                    ALARME = 0
+                    print("RECEBI LIGAR O ALARME")
+                    conn.send('1'.encode())
+                except:
+                    conn.send('0'.encode())
+
+            elif data == 'PEOPLE':
+                try:
+                    conn.send(str(pessoas_na_sala).encode())
+                except:
+                    print("não consegui devolver")
+                    conn.send('0'.encode())
             else:
                 print("Mensagem não reconhecida\nEnvie novamente . . .")
 
@@ -90,56 +134,125 @@ def timer_th(tempo):
     GPIO.output(mapa_dict['Lâmpada 02'],0)
 
     to_na_thread = 0
+
+def setup_state():
+    dhtDevice = None
+    data,json_string = getjson()
+    outputs = dict()
+    inputs = dict()
+    dht22_dict = dict()
+    global states
+    global mapa_dict
+
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
     
-pessoas_na_sala = 0
+    for output in data["outputs"]:
+        gpio = int(output["gpio"])
+        GPIO.setup(gpio, GPIO.OUT)
+        outputs[output["tag"]] = GPIO.input(gpio)
+        mapa_dict[output["tag"]] = gpio
 
-def sub_person():
+    for entrada in data["inputs"]:
+        gpio = int(entrada["gpio"])
+        GPIO.setup(gpio, GPIO.IN)
+        inputs[entrada["tag"]] = GPIO.input(gpio)
+        mapa_dict[entrada["tag"]] = gpio
+
+    for temp in data['sensor_temperatura']:
+        temp_gpio = temp['gpio']
+        tag = temp['tag']
+    
+    print(mapa_dict)
+
+    try:
+        temperatura,umidade,dhtDevice = read_dht22(temp_gpio)
+        dhtDevice.exit()
+        if temperatura != -1:
+            print("Leitura bem sucedida")
+            dht22_dict['nome'] = temp['tag']
+            dht22_dict['temperatura'] = temperatura
+            dht22_dict['umidade'] = umidade
+            states['sensor_temp'] = dht22_dict
+
+    except: 
+        print('Não consegui fazer leitura')
+        dht22_dict['nome'] = temp['tag']
+        dht22_dict['temperatura'] = -1
+        dht22_dict['umidade'] = -1
+        
+    #print("Cheguei")
+
+    states["inputs"] = inputs
+    states["outputs"] = outputs
+    states['sensor_temp'] = dht22_dict
+    states['qntd_pessoas'] = pessoas_na_sala
+    states['ALARME'] = ALARME
+
+    return states
+
+def action_all(action):
+    global mapa_dict
+    
+    action = int(action)
+
+    try:
+        for output in dist_server_data['outputs']:
+            gpio = output['tag']
+            print(gpio)
+            print(f"State = {GPIO.input(mapa_dict[gpio])}")
+            GPIO.output(mapa_dict[gpio],action)
+        return 1
+    except:
+        return 0
+        
+def sub_person(oi):
     global pessoas_na_sala
-
+    print(f"uma pessoa a menos{pessoas_na_sala}")
     pessoas_na_sala-=1
 
-def add_person():
+def add_person(oi):
     global pessoas_na_sala
-
+    print(f"uma pessoa a mais{pessoas_na_sala}")
     pessoas_na_sala+=1
 
-def watch_sensors(dist_server_info : dict):
+def watch_sensors(dist_server_info):
+
+    global dist_server_data
+    global ALARME
+    dist_server_data = dist_server_info
     fumaca_flag = 0
     sensor_flag = 0
+    
 
-    GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Entrada'], GPIO.RISING, callback=add_person,bouncetime=200)   
-    GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Saída'], GPIO.RISING, callback=sub_person,bouncetime=200)   
+    GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Entrada'], GPIO.RISING, callback=add_person,bouncetime=50)   
+    GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Saída'], GPIO.RISING, callback=sub_person,bouncetime=50)   
         
     while True:
         print('hello from watch sensors')
-        if GPIO.input(mapa_dict['Sensor de Fumaça']) == 0 and fumaca_flag == 1:
-            print("tava ligado e desligou")
-            fumaca_flag = 0
-            send_data_through_socket('F-INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
-
+        print(ALARME)
         # checa fumaça
-        if GPIO.input(mapa_dict['Sensor de Fumaça']) == 1 and fumaca_flag == 0:
+        if GPIO.input(mapa_dict['Sensor de Fumaça']) == 1:
             print("tava desligado e ligou")
             print("ALARMEE !!!!!!")
             print('puta que pariu, pegou fogo')
-            fumaca_flag = 1
-            send_data_through_socket('INCENDIO',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
+            send_data_through_socket('INCENDIO',dist_server_data['porta_servidor_central'],dist_server_data['ip_servidor_central'])
             print('sinal enviado')
 
         # se o alarme tiver ativo e tiver movimento em algum sensor 
-        # dispara buzzer 
-        if GPIO.input(mapa_dict['Sirene do Alarme']) == 1:
+        # dispara buzzer
+        if ALARME == 1:
             # Verifica sensor janela 
             print("Modo de segurança ON")
             if GPIO.input(mapa_dict['Sensor de Janela']) == 1:
                 #print("OPA, Tem ladrão na janela !!!")
-                send_data_through_socket('ALARM-janela',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
+                send_data_through_socket('ALARM-janela',dist_server_data['porta_servidor_central'],dist_server_data['ip_servidor_central'])
             if GPIO.input(mapa_dict['Sensor de Presença']) == 1:
                 #print("OPA, Tem ladrão na sala !!!")
-                send_data_through_socket('ALARM-presenca',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
+                send_data_through_socket('ALARM-presenca',dist_server_data['porta_servidor_central'],dist_server_data['ip_servidor_central'])
             if GPIO.input(mapa_dict['Sensor de Porta']) == 1:
                 #print("OPA, Tem ladrão na porta !!!")
-                send_data_through_socket('ALARM-porta',dist_server_data['porta_servidor_distribuido'],'127.0.0.1')
+                send_data_through_socket('ALARM-porta',dist_server_data['porta_servidor_central'],dist_server_data['ip_servidor_central'])
         else:
             #print("DESLIGADÃO !!!")
             if GPIO.input(mapa_dict['Sensor de Presença']) == 1:
@@ -149,5 +262,4 @@ def watch_sensors(dist_server_info : dict):
                     timer = Thread(target = timer_th,args = [3],daemon = True)
                     timer.start()
         
-        time.sleep(0.5)
-
+        time.sleep(0.09)

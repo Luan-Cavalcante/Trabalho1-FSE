@@ -31,31 +31,18 @@ não apagar luz enquanto o sensor tiver ligado
 
 
 '''
-
 import socket		
-from gpiozero import LED,Button
 import RPi.GPIO as GPIO
 import time
 import json
 from adaf import read_dht22
 from threading import Thread
-from socket_distribuido import receive_data_through_socket,send_data_through_socket
+from socket_distribuido import setup_state,watch_sensors,getjson,send_data_through_socket,receive_data_through_socket,setup_server_dist
 
 states = dict()
 dist_server_data = dict()
 mapa_dict = dict()
-
-def getjson():
-    # Opening JSON file
-    f = open('configuracao_sala_02.json')
-
-    json_string = f.read()
-    #print(type(json_string))
-    data = json.loads(json_string)
-    f.close()
-
-    return data,json_string
-
+ALARME = 0
 
 def read_temp(data):
     for temp in data['sensor_temperatura']:
@@ -71,59 +58,6 @@ def read_temp(data):
         dht22_dict['umidade'] = umidade
 
     return dht22_dict
-
-def setup_state():
-    dhtDevice = None
-    data,json_string = getjson()
-    outputs = dict()
-    inputs = dict()
-    dht22_dict = dict()
-    global states
-    global mapa_dict
-
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setwarnings(False)
-    
-    for output in data["outputs"]:
-        gpio = int(output["gpio"])
-        GPIO.setup(gpio, GPIO.OUT)
-        outputs[output["tag"]] = GPIO.input(gpio)
-        mapa_dict[output["tag"]] = gpio
-
-    for entrada in data["inputs"]:
-        gpio = int(entrada["gpio"])
-        GPIO.setup(gpio, GPIO.OUT)
-        inputs[entrada["tag"]] = GPIO.input(gpio)
-        mapa_dict[entrada["tag"]] = gpio
-
-    for temp in data['sensor_temperatura']:
-        temp_gpio = temp['gpio']
-        tag = temp['tag']
-    
-    print(mapa_dict)
-
-    try:
-        temperatura,umidade,dhtDevice = read_dht22(temp_gpio)
-        dhtDevice.exit()
-        if temperatura != -1:
-            print("Leitura bem sucedida")
-            dht22_dict['nome'] = temp['tag']
-            dht22_dict['temperatura'] = temperatura
-            dht22_dict['umidade'] = umidade
-            states['sensor_temp'] = dht22_dict
-
-    except: 
-        print('Não consegui fazer leitura')
-        dht22_dict['nome'] = temp['tag']
-        dht22_dict['temperatura'] = -1
-        dht22_dict['umidade'] = -1
-    #print("Cheguei")
-
-    states["inputs"] = inputs
-    states["outputs"] = outputs
-    states['sensor_temp'] = dht22_dict
-    states['qntd_pessoas'] = pessoas_na_sala
-    return states
 
 def action_all(action):
     global mapa_dict
@@ -152,10 +86,6 @@ def sub_person():
 
     pessoas_na_sala-=1
 
-GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Entrada'], GPIO.RISING, callback=add_person,bouncetime=200)   
-GPIO.add_event_detect(mapa_dict['Sensor de Contagem de Pessoas Saída'], GPIO.RISING, callback=sub_person,bouncetime=200)   
-    
-
 def main():
     setup_state()
 
@@ -173,4 +103,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    

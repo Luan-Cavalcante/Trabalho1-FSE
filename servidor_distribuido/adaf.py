@@ -11,6 +11,10 @@ import adafruit_dht
 
 def read_dht22(gpio):
     gpio = str(gpio)
+    print('#############################################################')
+    print(gpio)
+    print('#############################################################')
+    sleep(5)
     dhtDevice = adafruit_dht.DHT22((getattr(board,'D'+gpio)),use_pulseio = False)
 
     # Print the values to the serial port
