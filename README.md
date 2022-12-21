@@ -9,11 +9,15 @@ A imagem da arquitetura do projeto é representada abaixo e a comunicação entr
 
 ## Meu Trabalho. 
 
+### Link para apresentação 
+
+https://youtu.be/AthoX-WZbuo
+
 ### Interface
 
 A minha interface seguiu um modelo simples, que monitora em tempo real uma sala por vez, com a opção de troca de sala, onde o central procura por salas disponíveis e se todas estiverem disponíveis ele segue a ordem da numeração da sala.
+![Screenshot from 2022-12-21 11-43-25](https://user-images.githubusercontent.com/67024690/208931711-7a6d567c-7ebf-4250-9a2f-833e1de4c184.png)
 
-![Screenshot from 2022-12-21 11-08-38](https://user-images.githubusercontent.com/67024690/208929239-87582517-fdc8-47cf-8f2f-2b008927c132.png)
 
 Acima, temos a interface, onde se você clica nas primeiras oções há a mudança de estado das outputs, ou seja, se está ligada e você clica a output desliga e vice-versa.
 
